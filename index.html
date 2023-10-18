@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <dialog>
+      <div class="dialog-container">
+        <div class="dialog-items">
+          <label for="bookName">Add the Book Name:</label>
+          <input type="text" id="bookName" />
+        </div>
+        <div class="dialog-items">
+          <label for="authorName">Add the Author Name:</label>
+          <input type="text" id="authorName" />
+        </div>
+        <div class="dialog-items">
+          <label for="readStatus">Read:</label>
+          <input type="checkbox" id="readStatus" />
+        </div>
+        <div class="dialog-items">
+          <button autofocus>Cancel</button>
+          <button>Confirm</button>
+        </div>
+      </div>
+    </dialog>
+    <header class="header">
+      <button class="add-book">Add Book</button>
+    </header>
+
+    <sidebar class="sidebar"></sidebar>
+
+    <main class="main"></main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
