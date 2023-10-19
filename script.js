@@ -54,19 +54,25 @@ function displayProperty() {
     readStatus.textContent = `Book Read:  ${book.isRead}`;
     const bookIndex = document.createElement("p");
     bookIndex.textContent = `Book Number:  ${index + 1}`;
+    const removeCard = document.createElement("button");
+    removeCard.classList.add("remove-btn");
+    removeCard.textContent = "Remove";
+
+    removeCard.addEventListener("click", () => {
+      removeBook(index, bookCard);
+    });
 
     bookCard.appendChild(nameOfBook);
     bookCard.appendChild(authorOfBook);
     bookCard.appendChild(readStatus);
     bookCard.appendChild(bookIndex);
+    bookCard.appendChild(removeCard);
+
     bookList.appendChild(bookCard);
   });
 }
 
-
-
-
-
-
-
-
+function removeBook(index, bookCard) {
+  myLibrary.splice(index, 1);
+  bookCard.remove();
+}
