@@ -1,3 +1,12 @@
+let favDialog = document.querySelector("dialog");
+let showDialog = document.querySelector("header>button");
+let cancelDialog = document.querySelector("dialog button");
+let bookName = document.getElementById("book-Name");
+let authorName = document.getElementById("author-Name");
+let readStatus = document.getElementById("readStatus");
+let confirmButton = document.querySelector(".btn-confirm");
+let bookList = document.querySelector(".bookList");
+
 let myLibrary = [];
 
 function Book(name, author, isRead) {
@@ -7,24 +16,15 @@ function Book(name, author, isRead) {
 }
 
 function addBookToLibrary() {
-  let a = ("Enter the book name!");
-  let b = ("Enter the author name!");
-  let c = ("Enter the isRead status!");
+  let bookInput = bookName.value;
+  let authorInput = authorName.value;
+  let readInput = readStatus.value;
 
-  addBook = new Book(a, b, c);
+  let addBook = new Book(bookInput, authorInput, readInput);
   let Bookadded = myLibrary.push(addBook);
 
-  addBook = " ";
-  return Bookadded;
+  displayProperty();
 }
-
-let x = addBookToLibrary();
-
-console.log(x);
-
-let favDialog = document.querySelector("dialog");
-let showDialog = document.querySelector("header>button");
-let cancelDialog = document.querySelector("dialog button");
 
 showDialog.addEventListener("click", () => {
   favDialog.showModal();
@@ -33,3 +33,40 @@ showDialog.addEventListener("click", () => {
 cancelDialog.addEventListener("click", () => {
   favDialog.close();
 });
+
+confirmButton.addEventListener("click", () => {
+  favDialog.close();
+
+  return addBookToLibrary();
+});
+
+function displayProperty() {
+  bookList.innerHTML = "";
+  myLibrary.forEach((book, index) => {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("bookCard");
+
+    const nameOfBook = document.createElement("p");
+    nameOfBook.textContent = `Book Name:  ${book.name}`;
+    const authorOfBook = document.createElement("p");
+    authorOfBook.textContent = `Author Name:  ${book.author}`;
+    const readStatus = document.createElement("p");
+    readStatus.textContent = `Book Read:  ${book.isRead}`;
+    const bookIndex = document.createElement("p");
+    bookIndex.textContent = `Book Number:  ${index + 1}`;
+
+    bookCard.appendChild(nameOfBook);
+    bookCard.appendChild(authorOfBook);
+    bookCard.appendChild(readStatus);
+    bookCard.appendChild(bookIndex);
+    bookList.appendChild(bookCard);
+  });
+}
+
+
+
+
+
+
+
+
